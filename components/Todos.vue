@@ -1,3 +1,13 @@
+<script setup>
+import { useTodoStore } from "../store/todo";
+const store = useTodoStore();
+const computedTodos = computed(() => store.todos);
+
+onMounted(() => {
+  store.fetchAllPosts();
+});
+</script>
+
 <template>
   <!-- component -->
   <div class="flex items-center justify-center h-screen">
@@ -16,11 +26,21 @@
             id="todoInput"
             class="w-full px-3 py-2 mr-4 border rounded shadow appearance-none text-grey-darker"
             placeholder="Insert your todo"
+            v-model="store.newTodo"
           />
           <button
+            v-if="store.addButton"
             class="p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500"
+            @click="store.addTodo()"
           >
             Submit
+          </button>
+          <button
+            v-if="store.addButton"
+            class="p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500"
+            @click="store.addTodo()"
+          >
+            Update
           </button>
         </div>
       </div>

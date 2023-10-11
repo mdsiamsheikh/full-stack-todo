@@ -2,6 +2,6 @@
 export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
   pinia: {
-    autoImports: ["useMainStore", ["useMainStore", "useMainStore"]],
+    autoImports: ["useTodoStore", ["useTodoStore", "useTodoStore"]],
   },
 });
