@@ -11,11 +11,27 @@
           class="bg-[#A555EC] text-[#fff] px-4 py-1 text-base rounded font-medium"
           to="/signin"
         >
-          Sign Up</NuxtLink
+          Signin</NuxtLink
         >
+        <button @click="logout()">logout</button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useTodoStore } from "../store/todo";
+import { signOut, getAuth } from "firebase/auth";
+const store = useTodoStore();
+const auth = getAuth();
+const logout = () => {
+  signOut(auth)
+    .then(() => {
+      store.setUser(null);
+      alert("logout");
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+};
+</script>
