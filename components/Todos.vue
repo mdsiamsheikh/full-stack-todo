@@ -10,7 +10,9 @@ onMounted(() => {
 
 <template>
   <!-- component -->
-  <div class="flex items-center justify-center h-screen">
+  <div
+    class="flex justify-center items-center min-h-[calc(100vh-70px)] overflow-hidden p-10"
+  >
     <div
       class="w-11/12 p-6 m-4 bg-white rounded rounded-lg shadow lg:w-3/4 lg:max-w-lg"
     >
@@ -52,11 +54,7 @@ onMounted(() => {
             <div class="list-text">
               <div><h2 class="text-lg font-semibold">Task 1</h2></div>
             </div>
-            <div
-              class="todo-list"
-              v-for="todo in computedTodos"
-              :key="todo._id"
-            >
+            <div class="todo-list" v-for="todo in computedTodos" :key="todo.id">
               <div
                 class="flex items-center justify-between p-2 mt-3 border rounded-lg border-white-500"
               >
@@ -71,13 +69,13 @@ onMounted(() => {
                 <div class="button">
                   <button
                     class="p-2 ml-2 text-red-500 border-red-500 rounded hover:text-white hover:bg-red-500"
-                    @click="store.editTodo(todo._id, todo)"
+                    @click="store.editTodo(todo.id, todo)"
                   >
                     Edit
                   </button>
                   <button
                     class="p-2 ml-2 text-red-500 border-red-500 rounded hover:text-white hover:bg-red-500"
-                    @click="store.deleteTodo(todo._id)"
+                    @click="store.deleteTodo(todo.id)"
                   >
                     Delete
                   </button>

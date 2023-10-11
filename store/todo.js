@@ -16,10 +16,6 @@ export const useTodoStore = defineStore("todo", () => {
     user.value = payload;
   }
 
-  const generateUniqueId = () => {
-    return Math.floor(Math.random() * 1000000);
-  };
-
   const uppercaseFirstLetter = (str) =>
     str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -34,10 +30,10 @@ export const useTodoStore = defineStore("todo", () => {
   const fetchAllPosts = async () => {
     try {
       const response = await axios.get(
-        "https://rest-api-ug3w.onrender.com/api/v1/posts"
+        "https://full-stack-todo-api-i3xj.onrender.com/todo/all/"
       );
-
-      todos.value = response.data.data;
+      console.log(response.data.todos);
+      todos.value = response.data.todos;
     } catch (error) {
       console.error("Error fetching posts:", error);
     }
@@ -51,15 +47,14 @@ export const useTodoStore = defineStore("todo", () => {
       }
 
       const response = await axios.post(
-        "https://rest-api-ug3w.onrender.com/api/v1/posts",
+        "https://full-stack-todo-api-i3xj.onrender.com/todo/",
         {
-          id: generateUniqueId(),
           todo: uppercaseFirstLetter(newTodo.value),
           color: getRandomColor(),
         }
       );
 
-      const newTodoItem = response.data.data;
+      const newTodoItem = response.data.todos;
 
       todos.value.push(newTodoItem);
       errMsg.value = "";
@@ -67,6 +62,7 @@ export const useTodoStore = defineStore("todo", () => {
       console.error("Error adding a todo:", error);
     } finally {
       newTodo.value = "";
+      fetchAllPosts();
     }
   };
 
@@ -98,14 +94,14 @@ export const useTodoStore = defineStore("todo", () => {
       };
 
       const response = await axios.put(
-        `https://rest-api-ug3w.onrender.com/api/v1/posts/${editingTodo.value.id}`,
+        `https://full-stack-todo-api-i3xj.onrender.com/todo/${editingTodo.value.id}`,
         updatedTodo
       );
 
       const updatedTodoItem = response.data.data;
 
       const index = todos.value.findIndex(
-        (todo) => todo._id === updatedTodoItem._id
+        (todo) => todo.id === updatedTodoItem.id
       );
       if (index !== -1) {
         todos.value.splice(index, 1, updatedTodoItem);
@@ -125,10 +121,10 @@ export const useTodoStore = defineStore("todo", () => {
   const deleteTodo = async (postId) => {
     try {
       await axios.delete(
-        `https://rest-api-ug3w.onrender.com/api/v1/posts/${postId}`
+        `https://full-stack-todo-api-i3xj.onrender.com/todo/${postId}`
       );
 
-      todos.value = todos.value.filter((todo) => todo._id !== postId);
+      todos.value = todos.value.filter((todo) => todo.id !== postId);
     } catch (error) {
       console.error("Error deleting the todo:", error);
     }
