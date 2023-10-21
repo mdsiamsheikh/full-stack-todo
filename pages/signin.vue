@@ -1,6 +1,79 @@
 <template>
-  <div>
-    <button @click.stop="signInWithGoogle">Signin With Google</button>
+  <div
+    class="flex justify-center items-center min-h-[calc(100vh-70px)] overflow-hidden p-10"
+  >
+    <div
+      class="mx-auto max-w-[375px-667px] min-h-[468px] shadow-lg bg-[#F3EEFF] rounded-[12px] p-9 gap-[56px]"
+    >
+      <div class="flex justify-center items-center mt-8 p-2 gap-[8px]">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 37 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.4998 5.33398C15.2679 5.33398 16.9636 6.03636 18.2139 7.2866C19.4641 8.53685 20.1665 10.2325 20.1665 12.0006C20.1665 13.7688 19.4641 15.4645 18.2139 16.7147C16.9636 17.9649 15.2679 18.6673 13.4998 18.6673C11.7317 18.6673 10.036 17.9649 8.78579 16.7147C7.53555 15.4645 6.83317 13.7688 6.83317 12.0006C6.83317 10.2325 7.53555 8.53685 8.78579 7.2866C10.036 6.03636 11.7317 5.33398 13.4998 5.33398ZM13.4998 22.0006C17.9498 22.0006 26.8332 24.234 26.8332 28.6673V32.0006H0.166504V28.6673C0.166504 24.234 9.04984 22.0006 13.4998 22.0006ZM26.4332 5.93398C29.7998 9.60065 29.7998 14.684 26.4332 18.0506L23.6332 15.234C25.0332 13.2673 25.0332 10.7173 23.6332 8.75065L26.4332 5.93398ZM31.9498 0.333984C38.4998 7.08398 38.4498 17.184 31.9498 23.6673L29.2332 20.9506C33.8498 15.6506 33.8498 8.08398 29.2332 3.05065L31.9498 0.333984Z"
+            fill="#03000E"
+          />
+        </svg>
+      </div>
+      <div class="text-center mt-4 text-[14px] font-[400] leading[22px]">
+        <h3>Welcome to Phonescribe</h3>
+      </div>
+
+      <button
+        class="mx-auto w-[308px] h-[44px] flex justify-center items-center mt-12 border-solid border-[1px] cursor-pointer border-[#A37CFF] rounded-md"
+        @click="signInWithGoogle"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_264_11372)">
+            <path
+              d="M24.4888 12.2242C24.4888 11.2409 24.4071 10.5234 24.2304 9.7793H12.7393V14.2173H19.4843C19.3484 15.3202 18.614 16.9811 16.9821 18.0972L16.9592 18.2458L20.5925 20.996L20.8442 21.0205C23.156 18.9344 24.4888 15.8649 24.4888 12.2242Z"
+              fill="#4285F4"
+            />
+            <path
+              d="M12.7393 23.9178C16.0438 23.9178 18.8179 22.8548 20.8442 21.0211L16.9821 18.0978C15.9486 18.8021 14.5615 19.2937 12.7393 19.2937C9.50273 19.2937 6.75576 17.2076 5.77654 14.3242L5.63301 14.3361L1.85507 17.193L1.80566 17.3271C3.81829 21.2337 7.95238 23.9178 12.7393 23.9178Z"
+              fill="#34A853"
+            />
+            <path
+              d="M5.77634 14.3248C5.51797 13.5807 5.36844 12.7834 5.36844 11.9596C5.36844 11.1357 5.51797 10.3385 5.76275 9.59439L5.75591 9.43592L1.93062 6.5332L1.80547 6.59137C0.975969 8.21247 0.5 10.0329 0.5 11.9596C0.5 13.8863 0.975969 15.7066 1.80547 17.3277L5.77634 14.3248Z"
+              fill="#FBBC05"
+            />
+            <path
+              d="M12.7393 4.62403C15.0374 4.62403 16.5877 5.59402 17.4717 6.40461L20.9258 3.10928C18.8044 1.1826 16.0438 0 12.7393 0C7.95238 0 3.81829 2.68406 1.80566 6.59056L5.76295 9.59359C6.75576 6.7102 9.50273 4.62403 12.7393 4.62403Z"
+              fill="#EB4335"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_264_11372">
+              <rect
+                width="24"
+                height="24"
+                fill="white"
+                transform="translate(0.5)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+        <p class="ml-2 text-[16px] font-[500] leading[24px] gap-[14px]">
+          Sign in with Google
+        </p>
+      </button>
+      <div
+        class="text-center w-[388px] mt-14 text-[14px] font-[500] leading[22px] px-[40px]"
+      >
+        This site is protected by reCAPTCHA and the Google Privacy Policy and
+        Terms of Service apply
+      </div>
+    </div>
   </div>
 </template>
 
