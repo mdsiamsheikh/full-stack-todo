@@ -9,7 +9,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- component -->
   <div
     class="flex justify-center items-center min-h-[calc(100vh-70px)] overflow-hidden p-10"
   >
