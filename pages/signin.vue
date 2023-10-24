@@ -68,12 +68,15 @@
 
 <script setup>
 import { signInWithPopup, GoogleAuthProvider, getAuth } from "firebase/auth";
+const route = useRoute();
 const signInWithGoogle = async () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   try {
     await signInWithPopup(auth, provider);
-    console.log(auth, provider);
+    if (auth.currentUser.email) {
+      navigateTo("/");
+    }
   } catch (error) {
     console.error("Error signing in with Google:", error);
   }
