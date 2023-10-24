@@ -52,11 +52,13 @@ import { useTodoStore } from "../store/todo";
 import { signOut, getAuth } from "firebase/auth";
 const store = useTodoStore();
 const auth = getAuth();
+// let showPopupProfileBox = false;
+
 const logout = () => {
   signOut(auth)
     .then(() => {
       store.setUser(null);
-      alert("logout");
+      alert("Logout successful");
     })
     .catch((e) => {
       console.error(e);
