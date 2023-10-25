@@ -80,6 +80,7 @@ const signInWithGoogle = async () => {
   } catch (error) {
     console.error("Error signing in with Google:", error);
   }
+  return { signInWithGoogle, logout };
 };
 </script>
 
