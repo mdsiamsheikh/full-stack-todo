@@ -55,14 +55,14 @@ const store = useTodoStore();
 const auth = getAuth();
 let showPopupProfileBox = false;
 
-const logout = () => {
-  signOut(auth)
-    .then(() => {
-      store.setUser(null);
-      alert("Logout successful");
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-};
+// const logout = () => {
+//   signOut(auth)
+//     .then(() => {
+//       store.setUser(null);
+//       alert("Logout successful");
+//     })
+//     .catch((e) => {
+//       console.error(e);
+//     });
+// };
 </script>
