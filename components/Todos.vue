@@ -88,17 +88,6 @@ onMounted(() => {
   </div>
 </template>
 
-<script setup>
-const logout = () => {
-  signOut(auth)
-    .then(() => {
-      store.setUser(null);
-      alert("Logout successful");
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-};
-</script>
+<script setup></script>
 
 <style></style>
