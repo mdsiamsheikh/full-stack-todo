@@ -16,7 +16,7 @@
           >
         </div>
 
-        <div class="relative">
+        <div class="relative" v-else>
           <div v-if="store.user">
             <div v-if="store.user.photoURL">
               <img
@@ -48,11 +48,12 @@
 </template>
 
 <script setup>
+// import ProfilePopup from "~/components/profile-popup.vue";
 import { useTodoStore } from "../store/todo";
 import { signOut, getAuth } from "firebase/auth";
 const store = useTodoStore();
 const auth = getAuth();
-// let showPopupProfileBox = false;
+let showPopupProfileBox = false;
 
 const logout = () => {
   signOut(auth)
