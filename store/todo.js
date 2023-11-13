@@ -1,8 +1,30 @@
 import { defineStore } from "pinia";
+import { ref, computed } from "vue";
 
 import axios from "axios";
 
 export const useTodoStore = defineStore("todo", () => {
+  const user = ref(null);
+  const userDetails = ref(null);
+
+  function setUser(payload) {
+    user.value = payload;
+  }
+
+  function setUserDetails(payload) {
+    userDetails.value = payload;
+  }
+
+  async function getUserDetails() {
+    try {
+      const { data } = await axios.get(`/person?email=${user.value.email}`);
+      setUserDetails(data.person);
+      return data.person;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const newTodo = ref("");
   const todos = ref([]);
   const editingTodo = ref(null);
@@ -10,24 +32,20 @@ export const useTodoStore = defineStore("todo", () => {
 
   const addButton = ref(true);
   const updateButton = ref(false);
-  const user = ref(null);
 
-  function setUser(payload) {
-    user.value = payload;
+  function uppercaseFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  const uppercaseFirstLetter = (str) =>
-    str.charAt(0).toUpperCase() + str.slice(1);
-
-  const getRandomColor = () => {
+  function getRandomColor() {
     var color = "#";
     for (var i = 0; i < 6; i++) {
       color += Math.floor(Math.random() * 10);
     }
     return color;
-  };
+  }
 
-  const fetchAllPosts = async () => {
+  async function fetchAllPosts() {
     try {
       const response = await axios.get(
         "https://full-stack-todo-api-i3xj.onrender.com/todo/all/"
@@ -37,9 +55,9 @@ export const useTodoStore = defineStore("todo", () => {
     } catch (error) {
       console.error("Error fetching posts:", error);
     }
-  };
+  }
 
-  const addTodo = async () => {
+  async function addTodo() {
     try {
       if (newTodo.value.length < 5) {
         errMsg.value = "Please enter more than 5 letters.";
@@ -62,20 +80,19 @@ export const useTodoStore = defineStore("todo", () => {
       console.error("Error adding a todo:", error);
     } finally {
       newTodo.value = "";
-      fetchAllPosts();
+      await fetchAllPosts();
     }
-  };
+  }
 
-  const editTodo = (id, todo) => {
+  function editTodo(id, todo) {
     updateButton.value = true;
     addButton.value = false;
 
     editingTodo.value = { id, todo };
-
     newTodo.value = todo.todo;
-  };
+  }
 
-  const updateTodo = async () => {
+  async function updateTodo() {
     try {
       if (!editingTodo.value) {
         errMsg.value = "No todo item selected for editing.";
@@ -98,13 +115,14 @@ export const useTodoStore = defineStore("todo", () => {
         updatedTodo
       );
 
-      const updatedTodoItem = response.data.data;
+      const updatedTodoItem = response.data.todo;
+      console.log(updatedTodoItem, "ffg");
 
       const index = todos.value.findIndex(
         (todo) => todo.id === updatedTodoItem.id
       );
       if (index !== -1) {
-        todos.value.splice(index, 1, updatedTodoItem);
+        todos.value[index] = updatedTodoItem;
       }
 
       errMsg.value = "";
@@ -116,9 +134,9 @@ export const useTodoStore = defineStore("todo", () => {
       addButton.value = true;
       updateButton.value = false;
     }
-  };
+  }
 
-  const deleteTodo = async (postId) => {
+  async function deleteTodo(postId) {
     try {
       await axios.delete(
         `https://full-stack-todo-api-i3xj.onrender.com/todo/${postId}`
@@ -128,18 +146,16 @@ export const useTodoStore = defineStore("todo", () => {
     } catch (error) {
       console.error("Error deleting the todo:", error);
     }
-  };
-
-  // onMounted(() => {
-  //   fetchAllPosts();
-  // });
-
-  const computedTodos = computed(() => todos.value.slice());
+  }
 
   return {
+    user,
+    userDetails,
+    setUserDetails,
+    getUserDetails,
     setUser,
     newTodo,
-    todos: computedTodos,
+    todos,
     addTodo,
     editTodo,
     updateTodo,
