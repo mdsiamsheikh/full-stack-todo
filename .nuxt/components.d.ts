@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'Todos': typeof import("../components/Todos.vue")['default']
+    'HomeNavbar': typeof import("../components/home-navbar.vue")['default']
     'Navbar': typeof import("../components/navbar.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -22,6 +23,7 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyTodos': typeof import("../components/Todos.vue")['default']
+    'LazyHomeNavbar': typeof import("../components/home-navbar.vue")['default']
     'LazyNavbar': typeof import("../components/navbar.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
     'LazyNuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -45,6 +47,7 @@ declare module 'vue' {
 }
 
 export const Todos: typeof import("../components/Todos.vue")['default']
+export const HomeNavbar: typeof import("../components/home-navbar.vue")['default']
 export const Navbar: typeof import("../components/navbar.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -65,6 +68,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyTodos: typeof import("../components/Todos.vue")['default']
+export const LazyHomeNavbar: typeof import("../components/home-navbar.vue")['default']
 export const LazyNavbar: typeof import("../components/navbar.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
 export const LazyNuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']

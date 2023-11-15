@@ -82,6 +82,7 @@ const cutEmailIntoAcceptableLength = (email) => {
 
 import { signOut, getAuth } from "firebase/auth";
 const auth = getAuth();
+
 const logout = () => {
   signOut(auth)
     .then(() => {
