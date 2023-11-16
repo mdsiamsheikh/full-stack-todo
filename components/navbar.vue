@@ -10,6 +10,7 @@
           <h1 class="text-[#03000E] text-xl font-semibold">Todo</h1></NuxtLink
         >
         <NuxtLink
+          v-if="!store.user"
           class="bg-[#A555EC] text-[#fff] px-4 py-1 text-base rounded font-medium"
           to="/signin"
         >
@@ -26,7 +27,7 @@
             </h3>
           </div>
           <NuxtLink
-            to="/profile"
+            to="/"
             class="flex items-center gap-2 w-full px-3 py-1.5 hover:bg-[#DAECEF]"
           >
             <div
@@ -44,7 +45,7 @@
               </svg>
             </div>
 
-            <span class="text-lg text-[#127582]">Profile</span></NuxtLink
+            <span class="text-lg text-[#127582]">Todo</span></NuxtLink
           >
           <button
             class="flex items-center gap-2 w-full px-3 py-1.5 hover:bg-[#DAECEF] border-t mt-2 border-e-cyan-350"
