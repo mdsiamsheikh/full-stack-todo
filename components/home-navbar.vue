@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import navbar from "~/components/navbar.vue";
+// import navbar from "~/components/navbar.vue";
 import { useTodoStore } from "~/store/todo";
 const { $pinia } = useNuxtApp();
 const store = useTodoStore($pinia);
