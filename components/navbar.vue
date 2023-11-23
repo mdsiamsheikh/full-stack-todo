@@ -6,9 +6,7 @@
       <div
         class="flex justify-between text-center items-center w-[800px] m-auto"
       >
-        <NuxtLink to="/" class="text-xl font-bold text-white-500">
-          <h1 class="text-[#03000E] text-xl font-semibold">Todo</h1></NuxtLink
-        >
+        <h1 class="text-[#03000E] text-xl font-semibold">Todo</h1>
         <NuxtLink
           v-if="!store.user"
           class="bg-[#A555EC] text-[#fff] px-4 py-1 text-base rounded font-medium"
@@ -16,15 +14,23 @@
         >
           Sign in
         </NuxtLink>
+
         <div v-if="store.user">
           <div class="px-3">
-            <h2 class="text-xl font-semibold text-[#333] opacity-90 mt-1.5">
-              {{ store.user.name }}
-            </h2>
-            <h3 class="text-base text-[#000000] py-0.5 opacity-70">
-              {{ cutEmailIntoAcceptableLength(store.user.email) }}
+            <h2
+              class="text-xl font-semibold text-[#333] opacity-90 mt-1.5"
+            ></h2>
+            <h3
+              class="text-base flex justify-between gap-1 items-center text-[#000000] py-0.5"
+            >
+              <img
+                class="w-10 rounded-full"
+                :src="store.user.photoURL"
+                alt="ih"
+              />
             </h3>
           </div>
+
           <div>
             <button
               class="flex items-center gap-2 w-full px-3 py-1.5 hover:bg-[#DAECEF] border-t mt-2 border-e-cyan-350"
@@ -45,7 +51,7 @@
                   />
                 </svg>
               </div>
-              <button class="text-lg text-[#127582]">Log Out</button>
+              <NuxtLink class="text-lg text-[#127582]">Log Out</NuxtLink>
             </button>
           </div>
         </div>
@@ -68,7 +74,7 @@ const logout = () => {
   signOut(auth)
     .then(() => {
       store.setUser(null);
-      alert("logout page");
+      alert("Logout successful");
     })
     .catch((e) => {
       console.error(e);
