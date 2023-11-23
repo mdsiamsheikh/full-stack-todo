@@ -19,7 +19,7 @@
               <img
                 class="rounded-full cursor-pointer w-9 h-9"
                 :src="store.user.photoURL"
-                alt=""
+                alt="ah"
                 @click="logout"
               />
             </div>

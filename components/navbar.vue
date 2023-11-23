@@ -17,9 +17,6 @@
 
         <div v-if="store.user">
           <div class="px-3">
-            <h2
-              class="text-xl font-semibold text-[#333] opacity-90 mt-1.5"
-            ></h2>
             <h3
               class="text-base flex justify-between gap-1 items-center text-[#000000] py-0.5"
             >
