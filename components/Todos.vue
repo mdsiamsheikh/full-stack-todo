@@ -12,11 +12,9 @@ onMounted(() => {
   <div
     class="flex justify-center items-center min-h-[calc(100vh-70px)] overflow-hidden p-10"
   >
-    <div
-      class="w-11/12 p-6 m-4 bg-white rounded rounded-lg shadow lg:w-3/4 lg:max-w-lg"
-    >
+    <div class="w-[600px] m-auto p-6 m-4 bg-white rounded rounded-lg shadow">
       <div
-        class="flex items-center justify-center p-3 border-2 rounded-full m-14"
+        class="flex items-center justify-center p-3 m-auto border-2 rounded-full m-14"
       >
         <h1 class="text-xl font-semibold">Full-Stack ToDo</h1>
       </div>
