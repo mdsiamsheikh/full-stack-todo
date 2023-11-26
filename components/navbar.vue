@@ -7,30 +7,34 @@
         class="flex justify-between text-center items-center w-[800px] m-auto"
       >
         <h1 class="text-[#03000E] text-xl font-semibold">Todo</h1>
-        <NuxtLink
-          v-if="!store.user"
-          class="bg-[#A555EC] text-[#fff] px-4 py-1 text-base rounded font-medium"
-          to="/signin"
-        >
-          Sign in
-        </NuxtLink>
+        <div v-if="!store.user">
+          <NuxtLink
+            class="bg-[#A555EC] text-[#fff] px-4 py-1 text-base rounded font-medium"
+            to="/signin"
+          >
+            Sign in
+          </NuxtLink>
+        </div>
 
-        <div v-if="store.user">
-          <div class="px-3">
-            <h3
-              class="text-base flex justify-between gap-1 items-center text-[#000000] py-0.5"
-            >
+        <div class="relative" v-else>
+          <div>
+            <!-- <h2>{{ store.user }}</h2> -->
+            <div v-if="store.user.photoURL">
               <img
-                class="w-10 rounded-full"
-                :src="store.user.photoURL"
-                alt="ih"
+                class="rounded-full cursor-pointer w-9 h-9"
+                :src="store?.user?.photoURL"
+                alt=""
+                @click.stop="showPopupProfileBox = !showPopupProfileBox"
               />
-            </h3>
+            </div>
           </div>
 
-          <div>
+          <ProfilePopup
+            v-show="showPopupProfileBox"
+            class="block popup absolute bg-gray-100 w-[250px] min-h-[155px] top-[2.5rem] right-0 bottom-0 z-10 rounded-lg shadow-lg"
+          >
             <button
-              class="flex items-center gap-2 w-full px-3 py-1.5 hover:bg-[#DAECEF] border-t mt-2 border-e-cyan-350"
+              class="flex justify-center text-center border-solid border-2 border-indigo-200 gap-2 px-3 py-1.5 border-t mt-6"
               @click="logout"
             >
               <div
@@ -50,7 +54,7 @@
               </div>
               <NuxtLink class="text-lg text-[#127582]">Log Out</NuxtLink>
             </button>
-          </div>
+          </ProfilePopup>
         </div>
       </div>
     </div>
@@ -63,6 +67,8 @@ const store = useTodoStore();
 const cutEmailIntoAcceptableLength = (email) => {
   return email.length > 20 ? email.substring(0, 20) + "..." : email;
 };
+
+const showPopupProfileBox = ref(false);
 
 import { signOut, getAuth } from "firebase/auth";
 const auth = getAuth();
