@@ -18,7 +18,6 @@
 
         <div class="relative" v-else>
           <div>
-            <!-- <h2>{{ store.user }}</h2> -->
             <div v-if="store.user.photoURL">
               <img
                 class="rounded-full cursor-pointer w-9 h-9"
