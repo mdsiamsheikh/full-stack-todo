@@ -33,13 +33,13 @@ onMounted(() => {
           >
             Submit
           </button>
-          <tr
+          <button
             v-if="store.updateButton"
             class="p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500"
             @click="store.updateTodo()"
           >
             Update
-          </tr>
+          </button>
         </div>
         <p class="justify-center m-2 text-xs text-center text-red-600">
           {{ store.errMsg }}
