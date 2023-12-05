@@ -18,8 +18,8 @@ onMounted(() => {
       >
         <h1 class="text-xl font-semibold">Full-Stack ToDo</h1>
       </div>
-      <div class="mb-4">
-        <div class="flex mt-4">
+      <div class="mb-5">
+        <div class="flex mt-9">
           <input
             type="text"
             placeholder="Insert your todo"
@@ -59,6 +59,7 @@ onMounted(() => {
                   {{ todo.todo }}
                 </th>
               </div>
+
               <table class="button">
                 <button
                   class="p-2 ml-2 text-red-500 border-red-500 rounded hover:text-white"
