@@ -17,11 +17,16 @@
             v-model="store.newTodo"
           />
           <button
-            v-if="store.addButton"
-            class="p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500"
-            @click="store.addTodo()"
+            :class="{
+              'p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500':
+                store.addButton,
+              'p-2 border-2 rounded text-teal border-teal cursor-not-allowed opacity-50':
+                store.loading,
+            }"
+            @click="submitHandler()"
+            :disabled="store.loading"
           >
-            Submit
+            {{ store.loading ? "Loading..." : "Submit" }}
           </button>
           <button
             v-if="store.updateButton"
@@ -36,7 +41,8 @@
         </p>
       </div>
       <ul>
-        <li>
+        <li v-if="computedTodos.length === 0">No todos available</li>
+        <li v-else>
           <div class="todo-list" v-for="todo in computedTodos" :key="todo.id">
             <div
               class="flex items-center justify-between p-2 mt-3 border rounded-lg border-white-500"
@@ -49,7 +55,6 @@
                   {{ todo.todo }}
                 </th>
               </div>
-
               <table class="button">
                 <button
                   class="p-2 ml-2 text-red-500 border-red-500 rounded hover:text-white"
@@ -92,8 +97,19 @@
 
 <script setup>
 import { useTodoStore } from "../store/todo";
+import { computed, onMounted } from "vue";
+
 const store = useTodoStore();
 const computedTodos = computed(() => store.todos);
+
+const submitHandler = async () => {
+  try {
+    store.loading = true;
+    await store.addTodo();
+  } finally {
+    store.loading = false;
+  }
+};
 
 onMounted(() => {
   store.fetchAllPosts();
