@@ -41,7 +41,6 @@ export const useTodoStore = defineStore("todo", () => {
     var color = "#";
     for (var i = 0; i < 6; i++) {
       color += Math.floor(Math.random() * 10);
-      alert("Loding");
     }
     return color;
   }
