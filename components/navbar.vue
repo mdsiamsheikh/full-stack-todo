@@ -30,7 +30,7 @@
 
           <ProfilePopup
             v-show="showPopupProfileBox"
-            class="block popup absolute bg-gray-100 w-[250px] min-h-[155px] top-[2.5rem] right-0 bottom-0 z-10 rounded-lg shadow-lg"
+            class="block popup absolute bg-gray-100 w-[250px] min-h-[130px] top-[2.5rem] right-0 bottom-0 z-10 rounded-lg shadow-lg"
           >
             <p>{{ store.user.displayName }}</p>
             <div>

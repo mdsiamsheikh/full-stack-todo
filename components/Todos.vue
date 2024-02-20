@@ -1,13 +1,3 @@
-<script setup>
-import { useTodoStore } from "../store/todo";
-const store = useTodoStore();
-const computedTodos = computed(() => store.todos);
-
-onMounted(() => {
-  store.fetchAllPosts();
-});
-</script>
-
 <template>
   <div
     class="flex justify-center items-center min-h-[calc(100vh-70px)] overflow-hidden p-10"
@@ -100,6 +90,14 @@ onMounted(() => {
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useTodoStore } from "../store/todo";
+const store = useTodoStore();
+const computedTodos = computed(() => store.todos);
+
+onMounted(() => {
+  store.fetchAllPosts();
+});
+</script>
 
 <style></style>
