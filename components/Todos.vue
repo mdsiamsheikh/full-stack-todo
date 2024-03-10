@@ -19,7 +19,7 @@
           <button
             :class="{
               'p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-red-500':
-                store.addButton,
+                !store.addButton,
               'p-2 border-2 rounded text-teal border-teal cursor-not-allowed opacity-50':
                 store.loading,
             }"
