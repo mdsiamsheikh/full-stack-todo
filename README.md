@@ -1,5 +1,6 @@
 # Full-Stack-todo
 
+Live version of this site: https://movie-app6.netlify.app
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
